@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板基类</title>
+    <style>
+        #header{
+            width:100%;
+            height: 100px;
+            background-color: aqua;
+        }
+         #footer{
+            width:100%;
+            height: 100px;
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">header</div>
+
+    <div id="main">
+        {% block main %}
+
+        {% endblock main%}
+        <hr/>
+        {% block main2 %}
+
+        {% endblock main2 %}
+    </div>
+
+    <div id="footer">fotter</div>
+
+</body>
+</html>

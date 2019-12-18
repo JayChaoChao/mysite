@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息</title>
+    <script type="text/javascript" src="/static/mysote/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/static/tiny_mce/tiny_mce.js"></script>
+    <script type="text/javascript">
+        tinyMCE.init({
+            'mode':'textareas',
+            'theme':'advanced',
+            'width':800,
+            'height':600
+        })
+
+    </script>
+</head>
+<body>
+    <form>
+        <textarea name="str">视图富文本实例</textarea>
+    </form>
+    <a href="{% url 'mysote:good' 1 %}">url反向解析</a>
+    <h1>学生信息列表</h1>
+        <ul>
+            <!--输出值可以是python变量或对象属性   -->
+            <!--% 执行代码段%-->
+            {% for stu in students %}{# 当行注释 #}
+              <li>
+                  {{ stu.sname }}-{{ stu.sgrade }}--{{ stu.scontent }}
+              </li>
+             {% empty %}
+                <li>目前没有学生</li>
+            {% endfor %}
+        </ul>
+        <ul>
+            {% for index in students.paginator.page_range %}
+                {% if index == students.number %}
+                     <li>
+                        {{ index }}
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="/studentpage/{{ index }}">{{ index }}</a>
+                    </li>
+                {% endif %}
+
+            {% endfor %}
+        </ul>
+            {% if num %}
+                <h1>测试 {{ num }}</h1>
+            {% endif %}
+            {% comment %}
+                <h1>表示注释多行 不会执行的代码逻辑</h1>
+                {{ stu }}
+            {% endcomment %}
+        {{ code }}
+        {{ code|escape }}
+        {{ code|safe }}
+        {% autoescape off %}
+            {{ code }}{# 显示html代码 ，off关闭自动转义 on 开启 #}
+        {% endautoescape %}
+
+        <h1>Ajax动态显示学生列表</h1>
+        <button id="btn">显示学生信息</button>
+        <script type="text/javascript" src="/static/mysote/js/ajax.js"></script>
+</body>
+</html>

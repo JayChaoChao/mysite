@@ -1,0 +1,20 @@
+{% load  static from staticfiles%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="/static/mysote/css/style.css/"/>
+    <script type="text/javascript" src="/static/mysote/js/jquery-3.4.1.min.js">    </script>
+    <script type="text/javascript" src="/static/mysote/js/test.js"></script>
+
+</head>
+<body>
+    <h2>测试外部css样式</h2>
+    <img src="/static/mysote/img/1.jpg"/>
+    <img src="{% static 'mysote/img/1.jpg' %}"/>
+    <h1>欢迎：{{ username }}</h1>
+    <a href="/login">登录</a>
+     <a href="/quit">退出</a>
+</body>
+</html>
